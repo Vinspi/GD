@@ -32,7 +32,7 @@ public class SparqlReader {
         Query query = QueryFactory.create(queryString);
         QueryExecution qe = QueryExecutionFactory.create(query,this.model);
         ResultSet rs = qe.execSelect();
-        ResultSetFormatter.out(out,rs,query);
+        ResultSetFormatter.outputAsJSON(out,rs);
         qe.close();
 
         return ((ByteArrayOutputStream) out).toString("UTF-8");

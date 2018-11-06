@@ -1,0 +1,5 @@
+prefix sao: <http://purl.oclc.org/NET/UNIS/sao/sao#>
+SELECT ?event
+WHERE {
+    ?event a sao:streamEvent
+}
