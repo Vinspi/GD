@@ -2,9 +2,11 @@ package tp.tpsparql.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import tp.tpsparql.jsonRequests.DataRequest;
 import tp.tpsparql.services.SparqlService;
+
+import java.util.List;
 
 @RestController
 public class SparqlController {
@@ -13,8 +15,13 @@ public class SparqlController {
     SparqlService ss;
 
     @GetMapping("/")
-    public String getIndex(){
-        return ss.test();
+    public String getAllData(){
+        return ss.getAllData();
+    }
+
+    @PostMapping("/data")
+    public String getData(@RequestBody DataRequest dr){
+        return ss.getSomeData(dr);
     }
 
 }
