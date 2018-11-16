@@ -5,17 +5,23 @@ import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.util.FileManager;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.ServletContext;
 import java.io.*;
 
 public class SparqlReader {
 
     private Model model;
 
+    @Autowired
+    ServletContext sc;
+
     public SparqlReader(String fileName) throws FileNotFoundException {
 
         this.model = ModelFactory.createDefaultModel();
         InputStream is = FileManager.get().open(fileName);
+
 
         if(is == null){
             throw new FileNotFoundException();
